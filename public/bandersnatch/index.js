@@ -3,7 +3,7 @@ const localHost = ['127.0.0.1', '172.17.0.2', 'localhost']
 
 async function main() {
     const isLocal = !!~localHost.indexOf(window.location.hostname)  
-    console.log('isLocal?', isLocal)
+    console.log('isLocal mesmo com container?', isLocal)
     const manifestJSON = await (await fetch(MANIFEST_URL)).json()
     const host = isLocal ? manifestJSON.localHost : manifestJSON.productionHost
     const videoComponent = new VideoComponent()
