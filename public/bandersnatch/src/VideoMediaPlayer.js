@@ -45,7 +45,7 @@ class VideoMediaPlayer {
       mediaSource.duration = this.videoDuration /* evita rodar como "LIVE" */
       
       await this.fileDownload(selected.url)
-      setInterval(this.waitForQuestions.bind(this), 200) /* chama a cada 200ms e usa o .bind(this) para manter o contexto */
+      setInterval(() => this.waitForQuestions(), 200) /* chama a cada 200ms e usa o .bind(this) para manter o contexto */
     }
   }
 
