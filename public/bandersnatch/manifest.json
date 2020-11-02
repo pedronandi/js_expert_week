@@ -2,7 +2,7 @@
   "hostTag": "$HOST",
   "fileResolutionTag": "$RESOLUTION",
   "localHost": "http://127.0.0.1:8081/",
-  "productionHost": "",
+  "productionHost": "https://d2b4e5owf6z9k4.cloudfront.net",
   "codec": "video/mp4; codecs=\"avc1.64001F,mp4a.40.2\"",
   "intro": {
     "url": "$HOST/timeline/01.intro/01.intro-12.733333-$RESOLUTION.mp4",
