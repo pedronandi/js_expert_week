@@ -17,6 +17,7 @@ async function main() {
     videoPlayer.initializeCodec()
     videoComponent.initializePlayer()
 
+    window.nextChunk = (data) => videoPlayer.nextChunk(data) /* chama função pra baixar o vídeo novo */
 }
 
 window.onload = main

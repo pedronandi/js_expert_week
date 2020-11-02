@@ -6,6 +6,7 @@ class VideoMediaPlayer {
     this.videoElement = null
     this.sourceBuffer = null
     this.selected = {}
+    this.activeItem = {}
     this.videoDuration = 0
   }
 
@@ -43,12 +44,32 @@ class VideoMediaPlayer {
       mediaSource.duration = this.videoDuration /* evita rodar como "LIVE" */
       
       await this.fileDownload(selected.url)
-      this.waitForQuestions()
+      setInterval(this.waitForQuestions().bind(this), 200) /* chama a cada 200ms e usa o .bind(this) para manter o contexto */
     }
   }
 
   waitForQuestions() {
+    const currentTime = parseInt(this.videoElement.currentTime) /* pega apenas os segundos */
+    const option = this.selected.at === currentTime
+
+    if(!option) return;
+    if(this.activeItem.url === this.selected.url) return; /* evitar que o mesmo modal apareça 2x no mesmo segundo */
+
     this.videoComponent.configureModal(this.selected.options)
+    this.activeItem = this.selected
+  }
+
+  async nextChunk(data) {
+    const key = data.toLowerCase()
+    const selected = this.manifestJSON[key] /* novo trecho (data) */
+    this.selected = {
+      ...selected,
+      at: parseInt(this.videoElement.currentTime + selected.at) /* o "at" do novo trecho torna-se o que já era mais o tempo corrente do vídeo em tela */
+    }
+
+    /* deixa o restante do vídeo rodar enquanto baixa o novo */
+    this.videoElement.play()
+    await this.fileDownload(selected.url)
   }
 
   async fileDownload(url) {
@@ -68,7 +89,7 @@ class VideoMediaPlayer {
   setVideoPlayerDuration(finalUrl) {
     const bars = finalUrl.split('/')
     const [name, videoDuration] = bars[bars.length - 1].split('-')
-    this.videoDuration += videoDuration
+    this.videoDuration += parseFloat(videoDuration)
   }
 
   async processBufferSegments(allSegments) {
