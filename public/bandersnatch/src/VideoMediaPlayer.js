@@ -3,10 +3,11 @@ class VideoMediaPlayer {
     this.manifestJSON = manifestJSON
     this.network = network
     this.videoComponent = videoComponent
+
     this.videoElement = null
     this.sourceBuffer = null
-    this.selected = {}
     this.activeItem = {}
+    this.selected = {}
     this.videoDuration = 0
   }
 
