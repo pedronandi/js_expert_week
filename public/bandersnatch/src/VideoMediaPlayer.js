@@ -37,7 +37,7 @@ class VideoMediaPlayer {
       console.log('carregou!')
 
       this.sourceBuffer = mediaSource.addSourceBuffer(this.manifestJSON.codec)
-      const selected = this.selected = this.manifestJSON.guitarra
+      const selected = this.selected = this.manifestJSON.intro
       
       mediaSource.duration = this.videoDuration /* evita rodar como "LIVE" */
       
