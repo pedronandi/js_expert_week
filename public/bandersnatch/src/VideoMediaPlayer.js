@@ -14,7 +14,7 @@ class VideoMediaPlayer {
     const mediaSourceSupported = !!window.MediaSource
 
     if(!mediaSourceSupported) {
-      alert('Seu browser ou sistema não tem suporte a MSE!')
+      alert('Seu browser ou sistema não tem suporte a MSE!') /* Media Source Extensions API */
       return;
     }
 
