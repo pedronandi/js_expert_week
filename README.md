@@ -25,7 +25,7 @@ Possuir, instalados: Docker, VS Code e a extensão Remote-Containers
 ## Instruções
 
 1. Clonar o repositório
-2. Abrir o projeto com o CS Code e aceitar a opção de reabrir o container pelo Remote-Containers
+2. Abrir o projeto com o VS Code e aceitar a opção de reabrir o container pelo Remote-Containers
 
 >O [Pedro Renan](https://github.com/pedrorenan) tem um artigo muito bom sobre Remote-Containers chamado ["Em busca da independência para o ambiente de desenvolvimento"](https://medium.com/@pedrorenan/em-busca-da-independ%C3%AAncia-para-o-ambiente-de-desenvolvimento-2adc22f6f250).
 
